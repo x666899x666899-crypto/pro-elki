@@ -1,0 +1,13 @@
+# Секреты и рабочие данные бота. На GitHub не отправляются.
+.env
+**/.env
+bots/telegram/data/
+
+# Служебные файлы Python
+__pycache__/
+*.pyc
+
+# Служебные файлы систем
+Thumbs.db
+Desktop.ini
+.DS_Store

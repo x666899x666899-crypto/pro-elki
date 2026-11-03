@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ПРО ЁЛКИ — макет шапки (черновик, не сайт)</title>
+<style>
+  /* Это МАКЕТ для проверки внешнего вида. Рабочий сайт — в Тильде. */
+  html,body{margin:0;background:#0b1030;font-family:Arial,Helvetica,sans-serif}
+
+  .hero{position:relative;min-height:100vh;overflow:hidden;color:#fff;
+    background:#0b1030 url("shapka-kompyuter.jpg") no-repeat right center/cover}
+
+  /* затемнение слева, чтобы логотип и текст читались */
+  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(90deg,rgba(8,10,35,.78) 0%,rgba(8,10,35,.35) 45%,rgba(8,10,35,0) 70%)}
+
+  .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:center;
+    min-height:100vh;box-sizing:border-box;padding:90px 5vw 60px;max-width:760px}
+
+  /* чёрный фон логотипа «растворяется» на ночном фото */
+  .hero__logo{display:block;width:min(100%,620px);height:auto;mix-blend-mode:screen}
+
+  .hero__badges{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
+  .hero__badge{font:600 13px/1 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+    padding:9px 14px;border-radius:30px;border:1px solid rgba(255,214,130,.7);color:#ffd682;
+    background:rgba(20,16,50,.35)}
+  .hero__badge--city{border-color:rgba(255,255,255,.5);color:#fff}
+
+  .hero__text{font-size:19px;line-height:1.45;margin:14px 0 24px;max-width:480px;color:#f4eee0}
+  .hero__btn{align-self:flex-start;display:inline-block;padding:16px 34px;border-radius:40px;
+    background:linear-gradient(180deg,#e03a3a,#b3202a);color:#fff;text-decoration:none;
+    font:700 16px/1 Arial,sans-serif;letter-spacing:.04em;box-shadow:0 6px 24px rgba(224,58,58,.45)}
+
+  /* слой анимации: гирлянда + снег */
+  .fx{position:absolute;inset:0;z-index:2;pointer-events:none}
+  .fx canvas{position:absolute;inset:0;width:100%;height:100%}
+  .fx svg{position:absolute;left:0;top:0;width:100%;height:120px;overflow:visible}
+  .bulb{animation:tw 2.4s ease-in-out infinite}
+  @keyframes tw{0%,100%{opacity:.35}50%{opacity:1}}
+
+  @media(max-width:700px){
+    .hero{background-image:url("shapka-telefon.jpg");background-size:100% auto;background-position:center bottom;background-color:#03142e}
+    .hero::before{background:linear-gradient(180deg,rgba(8,10,35,.55) 0%,rgba(8,10,35,0) 55%)}
+    .hero__inner{padding:70px 6vw 0;justify-content:flex-start;align-items:center;text-align:center;max-width:none}
+    .hero__logo{width:min(84%,360px)}
+    .hero__badges{justify-content:center}
+    .hero__text{font-size:15px;margin:6px 0 14px;max-width:330px}
+    .hero__btn{align-self:center}
+  }
+  @media(prefers-reduced-motion:reduce){.bulb{animation:none}}
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero">
+  <div class="hero__inner">
+    <img class="hero__logo" src="logo-shapka.jpg" alt="ПРО ЁЛКИ от Михальчеков">
+    <div class="hero__badges">
+      <span class="hero__badge">Пятый сезон</span>
+      <span class="hero__badge hero__badge--city">Улан-Удэ</span>
+    </div>
+    <p class="hero__text">Новогодний магазин в Улан-Удэ. Выбирайте в каталоге и заказывайте онлайн.</p>
+    <a class="hero__btn" href="#catalog">Смотреть каталог</a>
+  </div>
+</section>
+
+<script>
+/* === Анимация шапки: гирлянда и снег ===
+   Вставляется в Тильду блоком «HTML-код» сразу после обложки.
+   HERO_SELECTOR — какой блок оживляем. */
+(function(){
+  var HERO_SELECTOR = '#hero';
+  var hero = document.querySelector(HERO_SELECTOR);
+  if(!hero || hero.querySelector('.fx')) return;
+  if(getComputedStyle(hero).position==='static') hero.style.position='relative';
+
+  var fx = document.createElement('div'); fx.className='fx'; hero.appendChild(fx);
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- гирлянда ---- */
+  var NS='http://www.w3.org/2000/svg';
+  var colors=['#ffd36b','#ff5a5a','#7be08a','#6fb7ff','#ffd36b'];
+  function garland(){
+    var old=fx.querySelector('svg'); if(old) old.remove();
+    var w=hero.clientWidth, seg=w<700?150:230, n=Math.ceil(w/seg), sag=w<700?26:38;
+    var svg=document.createElementNS(NS,'svg'); svg.setAttribute('viewBox','0 0 '+w+' 120');
+    var d='M0 6'; for(var i=0;i<n;i++){ d+=' Q '+(i*seg+seg/2)+' '+(6+sag*2)+' '+((i+1)*seg)+' 6'; }
+    var wire=document.createElementNS(NS,'path'); wire.setAttribute('d',d); wire.setAttribute('fill','none');
+    wire.setAttribute('stroke','#2b2f3a'); wire.setAttribute('stroke-width','2'); svg.appendChild(wire);
+    var L=wire.getTotalLength(), step=w<700?30:38, k=0;
+    for(var s=step/2;s<L;s+=step,k++){
+      var p=wire.getPointAtLength(s), c=colors[k%colors.length];
+      var g=document.createElementNS(NS,'g'); g.setAttribute('class','bulb');
+      g.style.animationDelay=(-(k*0.37)%2.4)+'s';
+      var glow=document.createElementNS(NS,'circle'); glow.setAttribute('cx',p.x); glow.setAttribute('cy',p.y+7);
+      glow.setAttribute('r','11'); glow.setAttribute('fill',c); glow.setAttribute('opacity','.28');
+      var b=document.createElementNS(NS,'ellipse'); b.setAttribute('cx',p.x); b.setAttribute('cy',p.y+7);
+      b.setAttribute('rx','4.2'); b.setAttribute('ry','6'); b.setAttribute('fill',c);
+      g.appendChild(glow); g.appendChild(b); svg.appendChild(g);
+    }
+    fx.appendChild(svg);
+  }
+  garland();
+
+  /* ---- снег ---- */
+  var cv=document.createElement('canvas'); fx.appendChild(cv);
+  var ctx=cv.getContext('2d'), flakes=[], W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  function size(){ W=hero.clientWidth; H=hero.clientHeight; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  function make(){ flakes=[]; var n=W<700?55:110;
+    for(var i=0;i<n;i++) flakes.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.6+.8,
+      v:Math.random()*.9+.35,a:Math.random()*Math.PI*2,s:Math.random()*.02+.005}); }
+  size(); make();
+  function frame(){
+    ctx.clearRect(0,0,W,H); ctx.fillStyle='rgba(255,255,255,.88)';
+    for(var i=0;i<flakes.length;i++){ var f=flakes[i];
+      f.y+=f.v; f.a+=f.s; f.x+=Math.sin(f.a)*.5;
+      if(f.y>H+5){ f.y=-5; f.x=Math.random()*W; }
+      ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,6.283); ctx.fill(); }
+    if(!reduce) requestAnimationFrame(frame);
+  }
+  frame();
+  if(reduce){ /* без движения: просто один кадр */ }
+  var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(function(){ size(); make(); garland(); },200); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!-- ПРО ЁЛКИ: шапка главной, версия 3 (31.10.2026). Блок Тильды «HTML-код» (T123), первый на странице.
+     Без плашек и рамок: знак и фото растворяются в фоне. Слева текст, справа фото; на телефоне фото ниже текста.
+     Адреса картинок (__LOGO__, __PARA__, __CITY__) подставляются при вставке в Тильду. -->
+<div id="proHero">
+  <div class="ph-sky"></div>
+  <div class="ph-shade"></div>
+  <canvas class="ph-snow"></canvas>
+  <div class="ph-in">
+    <div class="ph-text">
+      <h1 class="ph-logo" aria-label="ПРО ЁЛКИ от Михальчеков — новогодний магазин в Улан-Удэ">
+        <span class="ph-glow"></span>
+        <span class="ph-logo-in">
+          <img class="ph-logo-img" src="__LOGO__" alt="ПРО ЁЛКИ от Михальчеков" width="820" height="588">
+          <span class="ph-lights"></span>
+        </span>
+      </h1>
+      <div class="ph-badge"><i></i>Пятый сезон · Улан-Удэ<i></i></div>
+      <p class="ph-lead">Новогодний магазин в Улан-Удэ. Выбирайте в каталоге и заказывайте онлайн.</p>
+      <a class="ph-btn" href="#catalog">Смотреть каталог</a>
+    </div>
+    <div class="ph-photo"><img src="__PARA__" alt="Пара в уютных новогодних свитерах" width="768" height="1024"></div>
+  </div>
+  <div class="ph-garland"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="phWave" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.010 0.016" numOctaves="2" seed="4" result="n"><animate attributeName="baseFrequency" dur="11s" values="0.010 0.016;0.016 0.010;0.010 0.016" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+</div>
+
+<style>
+#proHero{position:relative;overflow:hidden;box-sizing:border-box;width:100%;height:clamp(720px,54vw,960px);
+  display:flex;align-items:center;background:linear-gradient(135deg,#7d1b34 0%,#561236 48%,#1f2656 100%);
+  font-family:"PT Sans","Trebuchet MS",Arial,sans-serif}
+#proHero *{box-sizing:border-box}
+#proHero .ph-sky{position:absolute;right:0;bottom:0;width:82%;height:100%;
+  background:url("__CITY__") right bottom/100% auto no-repeat;opacity:.5;filter:saturate(1.25);
+  -webkit-mask-image:radial-gradient(ellipse 95% 80% at 78% 100%,#000 45%,transparent 100%);
+  mask-image:radial-gradient(ellipse 95% 80% at 78% 100%,#000 45%,transparent 100%)}
+#proHero .ph-shade{position:absolute;inset:0;background:
+  radial-gradient(ellipse 28% 60% at 53% 55%,rgba(255,176,80,.30) 0%,rgba(255,176,80,0) 70%),
+  linear-gradient(90deg,rgba(52,6,24,.55) 0%,rgba(52,6,24,.20) 42%,rgba(52,6,24,0) 70%),
+  linear-gradient(180deg,rgba(30,6,30,.35) 0%,rgba(30,6,30,0) 28%,rgba(25,8,40,.30) 100%)}
+#proHero .ph-snow{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+#proHero .ph-in{position:relative;z-index:2;width:100%;height:100%;display:grid;grid-template-columns:36% 36%;column-gap:1%;
+  align-items:center;padding:60px 0 0 4.5vw}
+#proHero .ph-text{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding-bottom:40px}
+/* знак: без подложки, мягкое тёплое свечение позади */
+#proHero .ph-logo{position:relative;margin:0;width:100%;max-width:560px;line-height:0}
+#proHero .ph-glow{position:absolute;left:-8%;right:-8%;top:-10%;bottom:-6%;pointer-events:none;
+  background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,226,175,.80) 0%,rgba(255,206,140,.40) 45%,rgba(255,190,110,0) 75%)}
+#proHero .ph-logo-in{position:relative;display:block;animation:phSway 8s ease-in-out infinite;transform-origin:50% 100%}
+#proHero .ph-logo-img{position:relative;display:block;width:100%;height:auto;filter:url(#phWave) drop-shadow(0 6px 14px rgba(20,0,12,.55))}
+#proHero .ph-lights{position:absolute;inset:0;pointer-events:none}
+#proHero .ph-lights i{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,244,200,1) 0%,rgba(255,200,90,.85) 28%,rgba(255,170,60,0) 70%);
+  mix-blend-mode:screen;animation:phTw 2.6s ease-in-out infinite}
+@keyframes phSway{0%,100%{transform:rotate(-.6deg) translateY(0)}50%{transform:rotate(.6deg) translateY(-3px)}}
+@keyframes phTw{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
+#proHero .ph-badge{display:flex;align-items:center;gap:14px;margin:24px 0 14px;color:#ffd682;font-weight:700;font-size:16px;
+  letter-spacing:.2em;text-transform:uppercase;text-shadow:0 2px 10px rgba(25,0,12,.9)}
+#proHero .ph-badge i{display:block;width:34px;height:1px;background:linear-gradient(90deg,rgba(255,214,130,0),#ffd682)}
+#proHero .ph-badge i:last-child{background:linear-gradient(90deg,#ffd682,rgba(255,214,130,0))}
+#proHero .ph-lead{margin:0 0 26px;max-width:470px;color:#fff6e0;font-size:21px;line-height:1.45;
+  text-shadow:0 2px 6px rgba(25,0,12,.9),0 0 22px rgba(25,0,12,.8)}
+#proHero .ph-btn{display:inline-block;padding:18px 42px;border-radius:44px;
+  background:linear-gradient(180deg,#ff5a3c 0%,#d61f36 100%);
+  color:#fff!important;text-decoration:none!important;font-weight:700;font-size:18px;letter-spacing:.04em;
+  box-shadow:0 8px 30px rgba(255,70,50,.55);text-shadow:0 1px 3px rgba(0,0,0,.4)}
+#proHero .ph-btn:hover{filter:brightness(1.1)}
+/* фото растворяется в фоне: ни рамки, ни плашки; снизу обрезано по пояс и «вырастает» из края шапки */
+#proHero .ph-photo{align-self:end;justify-self:start;width:100%;max-width:640px;line-height:0;
+  -webkit-mask-image:radial-gradient(ellipse 62% 78% at 50% 100%,#000 62%,transparent 100%);
+  mask-image:radial-gradient(ellipse 62% 78% at 50% 100%,#000 62%,transparent 100%)}
+#proHero .ph-photo img{display:block;width:100%;height:auto;max-width:100%}
+#proHero .ph-garland{position:absolute;left:0;top:0;width:100%;height:150px;z-index:4;pointer-events:none}
+#proHero .ph-garland svg{display:block;width:100%;height:150px;overflow:visible}
+#proHero .gl{animation:phTw2 2.8s ease-in-out infinite}
+@keyframes phTw2{0%,100%{opacity:.55}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+  #proHero .ph-logo-in,#proHero .ph-lights i,#proHero .gl{animation:none}
+  #proHero .ph-logo-img{filter:drop-shadow(0 6px 14px rgba(20,0,12,.55))}
+}
+
+/* телефон: знак, текст, кнопка; ниже фото поменьше, под ним полоса с городом. Текст не лежит на лицах */
+@media(max-width:900px){
+  #proHero{height:auto;display:block;padding-bottom:0}
+  #proHero .ph-sky{left:0;right:0;width:100%;height:60vw;background-position:center bottom;background-size:100% auto;opacity:.75;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 40%);mask-image:linear-gradient(180deg,transparent 0%,#000 40%)}
+  #proHero .ph-shade{background:
+    radial-gradient(ellipse 70% 30% at 50% 74%,rgba(255,176,80,.28) 0%,rgba(255,176,80,0) 70%),
+    linear-gradient(180deg,rgba(30,6,30,.35) 0%,rgba(30,6,30,0) 40%,rgba(25,8,40,.25) 100%)}
+  #proHero .ph-in{display:flex;flex-direction:column;align-items:center;height:auto;padding:70px 16px 0}
+  #proHero .ph-text{align-items:center;text-align:center;width:100%;padding-bottom:0}
+  #proHero .ph-logo{max-width:400px}
+  #proHero .ph-badge{margin:16px 0 10px;font-size:13px;gap:10px}
+  #proHero .ph-badge i{width:22px}
+  #proHero .ph-lead{font-size:18px;margin:0 0 22px;max-width:360px}
+  #proHero .ph-btn{padding:16px 36px;font-size:17px}
+  #proHero .ph-photo{align-self:center;justify-self:center;width:86%;max-width:380px;margin:6px 0 -2px;
+    -webkit-mask-image:radial-gradient(ellipse 62% 80% at 50% 100%,#000 60%,transparent 100%);
+    mask-image:radial-gradient(ellipse 62% 80% at 50% 100%,#000 60%,transparent 100%)}
+  #proHero .ph-in{padding-bottom:calc(8vw)}
+}
+</style>
+
+<script>
+/* Гирлянда, снег, огоньки на знаке. Работают на опубликованной странице. */
+(function(){
+  var hero=document.getElementById('proHero');
+  if(!hero||hero.getAttribute('data-fx'))return;
+  hero.setAttribute('data-fx','1');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  function rnd(a,b){return a+Math.random()*(b-a);}
+
+  /* огоньки на знаке: места найдены по самому рисунку */
+  var spots=__SPOTS__;
+  var box=hero.querySelector('.ph-lights');
+  spots.forEach(function(p,i){var d=document.createElement('i');d.style.left=p[0]+'%';d.style.top=p[1]+'%';
+    d.style.animationDelay=(-Math.random()*2.6).toFixed(2)+'s';d.style.animationDuration=(1.8+Math.random()*2.2).toFixed(2)+'s';box.appendChild(d);});
+
+  /* сказочная гирлянда: хвойная лапа с лампочками и шарами */
+  var gbox=hero.querySelector('.ph-garland');
+  var lightCols=['#ffd98a','#ffb347','#ffe9b0','#ff8a8a','#a8dcff','#ffd98a','#c8f0a0'];
+  function garland(){
+    gbox.innerHTML='';
+    var w=hero.clientWidth,small=w<700,seg=small?190:300,n=Math.ceil(w/seg)+1,sag=small?26:40;
+    var svg=el('svg',{viewBox:'0 0 '+w+' 150',preserveAspectRatio:'none'},gbox);
+    var defs=el('defs',{},svg);
+    lightCols.forEach(function(c,i){var g=el('radialGradient',{id:'gl'+i},defs);
+      el('stop',{offset:'0','stop-color':'#fff','stop-opacity':'1'},g);el('stop',{offset:'.35','stop-color':c,'stop-opacity':'.95'},g);el('stop',{offset:'1','stop-color':c,'stop-opacity':'0'},g);});
+    var bg=el('radialGradient',{id:'bgold',cx:'.35',cy:'.3',r:'.8'},defs);
+    el('stop',{offset:'0','stop-color':'#fff2c0'},bg);el('stop',{offset:'.5','stop-color':'#e0a73c'},bg);el('stop',{offset:'1','stop-color':'#8a5a14'},bg);
+    var br=el('radialGradient',{id:'bred',cx:'.35',cy:'.3',r:'.8'},defs);
+    el('stop',{offset:'0','stop-color':'#ffb0a8'},br);el('stop',{offset:'.5','stop-color':'#d0202e'},br);el('stop',{offset:'1','stop-color':'#6e0a16'},br);
+    var d='M-20 4';for(var i=0;i<n;i++){d+=' Q '+(-20+i*seg+seg/2)+' '+(4+sag*2)+' '+(-20+(i+1)*seg)+' 4';}
+    var wire=el('path',{d:d,fill:'none',stroke:'#10281a','stroke-width':'5','stroke-linecap':'round'},svg);
+    var L=wire.getTotalLength();
+    /* хвоя вдоль провода */
+    var cols=['#12311d','#1c4a2a','#2a6638','#3e8248'],ds=['','','',''];
+    for(var s=0;s<L;s+=3.2){
+      var p=wire.getPointAtLength(s),q=wire.getPointAtLength(Math.min(L,s+1)),ang=Math.atan2(q.y-p.y,q.x-p.x);
+      for(var k=0;k<2;k++){
+        var a=ang+(Math.random()<.5?1:-1)*rnd(.5,1.35)+ (Math.random()<.7?0:Math.PI),len=rnd(9,small?20:26),ci=Math.floor(Math.random()*4);
+        ds[ci]+='M'+p.x.toFixed(1)+' '+p.y.toFixed(1)+'l'+(Math.cos(a)*len).toFixed(1)+' '+(Math.sin(a)*len).toFixed(1);
+      }
+    }
+    cols.forEach(function(c,i){el('path',{d:ds[i],stroke:c,'stroke-width':i>1?'1.7':'2','stroke-linecap':'round',fill:'none'},svg);});
+    /* лампочки и шары */
+    var step=small?34:44,k=0;
+    for(var s2=step/2;s2<L;s2+=step,k++){
+      var pt=wire.getPointAtLength(s2),isBall=(k%7===3),ci2=k%lightCols.length;
+      var g=el('g',{'class':isBall?'':'gl'},svg);if(!isBall){g.style.animationDelay=(-(k*0.43)%2.8)+'s';g.style.animationDuration=(2+((k*37)%15)/10)+'s';}
+      var hy=pt.y+10;
+      el('line',{x1:pt.x,y1:pt.y,x2:pt.x,y2:hy,stroke:'#10281a','stroke-width':'1.6'},g);
+      if(isBall){
+        el('rect',{x:pt.x-2.5,y:hy-1,width:5,height:4,fill:'#c9a24a',rx:1},g);
+        el('circle',{cx:pt.x,cy:hy+10,r:'9',fill:(k%14===3?'url(#bred)':'url(#bgold)')},g);
+        el('ellipse',{cx:pt.x-3,cy:hy+6,rx:'2.2',ry:'1.4',fill:'#fff',opacity:'.7'},g);
+      }else{
+        el('circle',{cx:pt.x,cy:hy+7,r:small?'14':'18',fill:'url(#gl'+ci2+')',opacity:'.9',style:'mix-blend-mode:screen'},g);
+        el('rect',{x:pt.x-2.4,y:hy,width:4.8,height:4,fill:'#14301e',rx:1},g);
+        el('ellipse',{cx:pt.x,cy:hy+9,rx:'3.8',ry:'5.6',fill:lightCols[ci2]},g);
+        el('ellipse',{cx:pt.x-1.2,cy:hy+7,rx:'1.1',ry:'1.8',fill:'#fff',opacity:'.85'},g);
+      }
+    }
+  }
+
+  /* снег: мелкие точки, как настоящие снежинки издалека */
+  var cv=hero.querySelector('.ph-snow'),ctx=cv.getContext('2d'),flakes=[],W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2);
+  function size(){W=hero.clientWidth;H=hero.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  function make(){flakes=[];var n=W<700?90:190;
+    for(var i=0;i<n;i++){var far=Math.random();flakes.push({x:Math.random()*W,y:Math.random()*H,r:far*1.3+.5,v:far*.7+.2,a:Math.random()*6.28,s:Math.random()*.02+.004,o:far*.5+.4});}}
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<flakes.length;i++){var f=flakes[i];f.y+=f.v;f.a+=f.s;f.x+=Math.sin(f.a)*.35;
+      if(f.y>H+4){f.y=-4;f.x=Math.random()*W;}
+      ctx.fillStyle='rgba(255,255,255,'+f.o+')';ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,6.283);ctx.fill();}
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  function all(){size();make();garland();}
+  all();frame();
+  var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(all,200);});
+  setTimeout(all,800);
+})();
+</script>

@@ -1,0 +1,191 @@
+<!-- ПРО ЁЛКИ: главная, шапка и полоса «Улан-Удэ» (версия 3, 3.11.2026).
+     Вставляется в Тильду блоком «HTML-код» (T123) самым первым на странице.
+     Шаблон: слова вида {{LOGO}} заменяет сборочный скрипт build.ps1 на адреса картинок.
+     Правила дизайна: никаких плашек и рамок; текст не лежит на лицах; фон приглушён, текст яркий. -->
+<div id="proHero">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <filter id="phWob" x="-4%" y="-4%" width="108%" height="108%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.011 0.016" numOctaves="2" seed="4" result="n"><animate attributeName="baseFrequency" dur="11s" values="0.011 0.016;0.016 0.022;0.011 0.016" repeatCount="indefinite"/></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="4.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs></svg>
+  <div class="ph-shade"></div>
+  <canvas class="ph-snow"></canvas>
+  <div class="ph-garland"></div>
+  <div class="ph-wrap">
+    <h1 class="ph-logo">
+      <img src="{{LOGO}}" alt="ПРО ЁЛКИ от Михальчеков — новогодний магазин в Улан-Удэ" width="964" height="700">
+      {{LIGHTS}}
+    </h1>
+    <div class="ph-photo" role="img" aria-label="Сергей и Валентина в уютных новогодних свитерах у наряженной ёлки"></div>
+    <div class="ph-body">
+      <div class="ph-season"><span>Пятый сезон</span><i></i><span>Улан-Удэ</span></div>
+      <p class="ph-lead">Новогодний магазин в Улан-Удэ: ёлки, гирлянды, игрушки и подарки. Выбирайте товары в каталоге и добавляйте в корзину.</p>
+      <a class="ph-btn" href="#proCatalog">Смотреть каталог</a>
+      <div class="ph-contacts">
+        <a class="c" href="{{MAXURL}}" target="_blank" rel="noopener"><span class="ic max"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 4.2c-4.5 0-8 3.2-8 7.5 0 2.3 1 4.3 2.7 5.7-.1.9-.4 1.9-1.2 2.7 1.5-.1 2.8-.6 3.8-1.4.9.3 1.7.4 2.7.4 4.5 0 8-3.2 8-7.4s-3.5-7.5-8-7.5zm-3 9.7V9.6l1.6 2.2 1.4-2.2v4.3h-1.2v-2l-.2.3-.2-.3v2H9zm5.1 0h-1.2V9.6h1.2v4.3z"/></svg></span>MAX</a>
+        <a class="c" href="{{TGURL}}" target="_blank" rel="noopener"><span class="ic tg"><svg viewBox="0 0 24 24"><path fill="#fff" d="M18.9 5.6 4.3 11.2c-1 .4-1 1 0 1.3l3.7 1.2 1.4 4.3c.2.5.1.7.7.7.5 0 .7-.2 1-.5l1.8-1.8 3.7 2.7c.7.4 1.2.2 1.4-.6l2.4-11.4c.3-1.1-.4-1.6-1.5-1.2zm-2.4 2.7-6.2 5.6-.3 2.7-1.3-4.1 7.8-4.8c.4-.2.6-.1.3.2z"/></svg></span>Telegram</a>
+        <a class="c" href="tel:{{TEL}}"><span class="ic tel"><svg viewBox="0 0 24 24"><path fill="#fff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></span>{{TELTEXT}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="proCity">
+  <div class="pc-head">
+    <h2>Новогодние товары</h2>
+    <p>Выбирайте товары в каталоге и добавляйте в корзину.</p>
+  </div>
+  <div class="pc-art"></div>
+</section>
+<a id="proCatalog" style="display:block;position:relative;top:-20px"></a>
+
+<style>
+html,body,.t-records{background:#fbf5ea!important}
+#proHero,#proCity{font-family:"PT Sans","Trebuchet MS",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+#proHero *,#proCity *{box-sizing:border-box}
+
+/* ===== ШАПКА, компьютер ===== */
+#proHero{position:relative;overflow:hidden;width:100%;height:clamp(720px,56vw,920px);display:flex;align-items:center;
+  background:linear-gradient(90deg,#280504 0%,#3d0608 60%,#46070a 100%)}
+#proHero .ph-photo{position:absolute;inset:0;z-index:0;background:url("{{HERODESK}}") right 25%/cover no-repeat}
+#proHero .ph-shade{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 36% 70% at 22% 55%,rgba(255,168,70,.16) 0%,rgba(255,168,70,0) 70%),
+    linear-gradient(180deg,rgba(18,2,4,.55) 0%,rgba(18,2,4,0) 22%,rgba(18,2,4,0) 78%,rgba(18,2,4,.55) 100%)}
+#proHero .ph-snow{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:2}
+#proHero .ph-wrap{width:50%;padding:92px 0 50px 6vw;display:flex;flex-direction:column;align-items:flex-start}
+#proHero .ph-logo{position:relative;z-index:3;margin:0;width:min(100%,500px);line-height:0}
+#proHero .ph-logo::before{content:"";position:absolute;left:-8%;top:-8%;width:116%;height:116%;z-index:-1;
+  background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,214,150,.42) 0%,rgba(255,214,150,.14) 55%,rgba(255,214,150,0) 78%)}
+#proHero .ph-logo img{display:block;width:100%;height:auto;
+  filter:url(#phWob) drop-shadow(0 0 12px rgba(255,236,200,.55)) drop-shadow(0 6px 14px rgba(0,0,0,.45));
+  transform-origin:50% 0;animation:phSway 9s ease-in-out infinite}
+@keyframes phSway{0%,100%{transform:rotate(-.45deg)}50%{transform:rotate(.45deg)}}
+#proHero .ph-logo .tw{position:absolute;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,#fff6c8 0%,rgba(255,214,110,.95) 22%,rgba(255,170,60,.45) 50%,rgba(255,170,60,0) 72%);
+  mix-blend-mode:screen;animation:phTw 2.6s ease-in-out infinite}
+@keyframes phTw{0%,100%{opacity:.15;transform:scale(.55)}50%{opacity:1;transform:scale(1.15)}}
+#proHero .ph-body{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start}
+#proHero .ph-season{display:flex;align-items:center;gap:14px;margin:22px 0 14px;color:#f6c768;font-weight:700;font-size:15px;letter-spacing:.24em;text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+#proHero .ph-season i{display:block;width:6px;height:6px;border-radius:50%;background:#f6c768;box-shadow:0 0 10px #f6c768}
+#proHero .ph-lead{margin:0 0 26px;max-width:500px;color:#fff6e4;font-size:21px;line-height:1.5;text-shadow:0 2px 14px rgba(15,0,0,.95),0 0 3px rgba(15,0,0,.6)}
+#proHero .ph-btn{display:inline-block;padding:18px 44px;border-radius:50px;background:linear-gradient(180deg,#ffd87a 0%,#f0a93a 100%);
+  color:#3b0a0c!important;font-weight:700;font-size:18px;letter-spacing:.03em;text-decoration:none!important;
+  box-shadow:0 10px 30px rgba(240,169,58,.45),0 2px 0 rgba(255,255,255,.35) inset;transition:transform .2s,box-shadow .2s}
+#proHero .ph-btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(240,169,58,.6),0 2px 0 rgba(255,255,255,.35) inset}
+#proHero .ph-contacts{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:30px}
+#proHero .c{display:inline-flex;align-items:center;gap:10px;color:#fff!important;font-weight:700;font-size:17px;text-decoration:none!important;text-shadow:0 2px 10px rgba(0,0,0,.8)}
+#proHero .c:hover{color:#ffd87a!important}
+#proHero .ic{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;box-shadow:0 4px 14px rgba(0,0,0,.45)}
+#proHero .ic svg{width:24px;height:24px}
+.ic.max{background:linear-gradient(135deg,#22b6ff 0%,#6a3dff 60%,#a43cff 100%)}
+.ic.tg{background:#2aabee}
+.ic.tel{background:linear-gradient(135deg,#3cc46a,#1f9a4c)}
+
+/* гирлянда */
+#proHero .ph-garland{position:absolute;left:0;top:0;width:100%;height:130px;z-index:5;pointer-events:none}
+#proHero .ph-garland svg{width:100%;height:130px;overflow:visible}
+#proHero .gb{animation:gbT 3.2s ease-in-out infinite}
+@keyframes gbT{0%,100%{opacity:.55}50%{opacity:1}}
+
+/* ===== ПОЛОСА «УЛАН-УДЭ» ===== */
+#proCity{position:relative;overflow:hidden;width:100%;padding-top:clamp(90px,10vw,150px);
+  background:linear-gradient(180deg,#46070a 0%,#2a2250 16%,#243a80 42%,#4d62a6 70%,#c9d3ea 92%,#fbf5ea 100%)}
+#proCity .pc-head{position:relative;z-index:3;text-align:center;padding:0 20px}
+#proCity h2{margin:0 0 12px;color:#fff;font-weight:700;font-size:clamp(32px,4.2vw,56px);line-height:1.1;letter-spacing:.01em;text-shadow:0 3px 18px rgba(10,5,40,.7)}
+#proCity p{margin:0;color:#eaeefc;font-size:clamp(17px,1.7vw,22px);text-shadow:0 2px 12px rgba(10,5,40,.8)}
+#proCity .pc-art{position:relative;z-index:1;margin:clamp(-10px,-1vw,0px) auto 0;width:min(100%,1180px);height:clamp(250px,34vw,470px);
+  background:url("{{CITY}}") center 78%/100% auto no-repeat;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 14%,#000 86%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 22%,#000 100%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 14%,#000 86%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 22%,#000 100%);mask-composite:intersect}
+
+/* ===== ТЕЛЕФОН ===== */
+@media(max-width:900px){
+  #proHero{display:block;height:auto;background:#220406}
+  #proHero .ph-wrap{width:100%;padding:62px 20px 40px;align-items:center}
+  #proHero .ph-logo{width:min(88%,360px);margin:0 auto}
+  #proHero .ph-logo img{animation-duration:8s;filter:drop-shadow(0 0 10px rgba(255,236,200,.5)) drop-shadow(0 4px 10px rgba(0,0,0,.45))}
+  #proHero .ph-photo{position:relative;inset:auto;z-index:1;width:calc(100% + 40px);margin:6px -20px 0;height:calc(100vw * .96);
+    background:url("{{HEROMOB}}") center bottom/100% auto no-repeat;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 16%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 16%,#000 88%,transparent 100%)}
+  #proHero .ph-body{align-items:center;text-align:center;margin-top:-6px}
+  #proHero .ph-season{margin:0 0 12px;font-size:13px;letter-spacing:.2em}
+  #proHero .ph-lead{font-size:18px;margin-bottom:22px}
+  #proHero .ph-btn{padding:17px 40px;font-size:17px}
+  #proHero .ph-contacts{justify-content:center;margin-top:24px;gap:14px 20px}
+  #proHero .c{font-size:16px}
+  #proHero .ic{width:40px;height:40px}
+  #proHero .ph-garland,#proHero .ph-garland svg{height:100px}
+  #proCity .pc-art{width:100%;height:56vw;background-position:center 76%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 25%,#000 100%);
+    mask-image:linear-gradient(90deg,transparent 0%,#000 6%,#000 94%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 25%,#000 100%)}
+}
+@media(prefers-reduced-motion:reduce){
+  #proHero .ph-logo img{animation:none;filter:drop-shadow(0 0 12px rgba(255,236,200,.55))}
+  #proHero .tw,#proHero .gb{animation:none;opacity:.8}
+}
+</style>
+
+<script>
+/* Гирлянда (с лапками хвои) и снег-точки в шапке */
+(function(){
+  var hero=document.getElementById('proHero');
+  if(!hero||hero.getAttribute('data-fx'))return;
+  hero.setAttribute('data-fx','1');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+  var cols=['#ffb54a','#ff6a5e','#ffe27a','#7fd2ff','#8fe596','#ffb54a','#ff8fb0'];
+  var gbox=hero.querySelector('.ph-garland');
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  function rnd(a,b){return a+Math.random()*(b-a);}
+  function garland(){
+    gbox.innerHTML='';
+    var w=hero.clientWidth,mob=w<700,seg=mob?170:260,n=Math.ceil(w/seg)+1,sag=mob?26:40,y0=-4;
+    var svg=el('svg',{viewBox:'0 0 '+w+' 130',preserveAspectRatio:'none'},gbox);
+    var defs=el('defs',{},svg);
+    var rg=el('radialGradient',{id:'gbGlow'},defs);
+    el('stop',{offset:'0','stop-color':'#fff','stop-opacity':'.95'},rg);el('stop',{offset:'.3','stop-color':'#fff','stop-opacity':'.45'},rg);el('stop',{offset:'1','stop-color':'#fff','stop-opacity':'0'},rg);
+    var d='M-20 '+y0;
+    for(var i=0;i<n;i++){d+=' Q '+(i*seg+seg/2-20)+' '+(y0+sag*2)+' '+((i+1)*seg-20)+' '+y0;}
+    var wire=el('path',{d:d,fill:'none',stroke:'#0f2a18','stroke-width':'3.2','stroke-linecap':'round'},svg);
+    var L=wire.getTotalLength();
+    /* лапки хвои вдоль провода */
+    var g1=el('g',{},svg),tone=['#1c4a2a','#2a6a3a','#143a22','#357a45'];
+    for(var s=4;s<L;s+=(mob?9:8)){
+      var p=wire.getPointAtLength(s),q=wire.getPointAtLength(Math.min(L,s+1)),ang=Math.atan2(q.y-p.y,q.x-p.x);
+      for(var k=0;k<3;k++){
+        var a=ang+Math.PI/2+rnd(-1.0,1.0),len=rnd(11,21);
+        el('line',{x1:p.x,y1:p.y,x2:p.x+Math.cos(a)*len,y2:p.y+Math.sin(a)*len,stroke:tone[(Math.random()*4)|0],'stroke-width':rnd(1.6,2.6),'stroke-linecap':'round'},g1);
+      }
+    }
+    /* лампочки */
+    var step=mob?48:60,idx=0;
+    for(var s2=step/2;s2<L;s2+=step,idx++){
+      var pt=wire.getPointAtLength(s2),c=cols[idx%cols.length];
+      var grp=el('g',{'class':'gb'},svg);grp.style.animationDelay=(-(idx*0.53)%3.2)+'s';
+      el('circle',{cx:pt.x,cy:pt.y+13,r:mob?20:26,fill:c,opacity:.38,style:'mix-blend-mode:screen'},grp);
+      el('circle',{cx:pt.x,cy:pt.y+13,r:mob?9:11,fill:c,opacity:.5,style:'mix-blend-mode:screen'},grp);
+      el('rect',{x:pt.x-2.6,y:pt.y+1,width:5.2,height:6,rx:1.2,fill:'#12301c'},grp);
+      el('path',{d:'M'+(pt.x-4.3)+' '+(pt.y+7)+' Q'+(pt.x-6.2)+' '+(pt.y+18)+' '+pt.x+' '+(pt.y+22)+' Q'+(pt.x+6.2)+' '+(pt.y+18)+' '+(pt.x+4.3)+' '+(pt.y+7)+' Z',fill:c,stroke:'rgba(255,255,255,.45)','stroke-width':.8},grp);
+      el('ellipse',{cx:pt.x-1.6,cy:pt.y+12,rx:1.3,ry:3.6,fill:'#fff',opacity:.75},grp);
+    }
+  }
+  /* снег: мелкие точки, три слоя глубины */
+  var cv=hero.querySelector('.ph-snow'),ctx=cv.getContext('2d'),fl=[],W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2);
+  function size(){W=hero.clientWidth;H=hero.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  function make(){fl=[];var n=W<700?90:190;
+    for(var i=0;i<n;i++){var z=Math.random();fl.push({x:Math.random()*W,y:Math.random()*H,z:z,r:.7+z*1.5,v:.25+z*.9,a:Math.random()*6.28,s:.004+Math.random()*.012,o:.35+z*.55});}}
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<fl.length;i++){var f=fl[i];f.y+=f.v;f.a+=f.s;f.x+=Math.sin(f.a)*.35+.08;
+      if(f.y>H+4){f.y=-4;f.x=Math.random()*W;} if(f.x>W+4)f.x=-4;
+      ctx.fillStyle='rgba(255,255,255,'+f.o+')';ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,6.283);ctx.fill();}
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  function all(){size();make();garland();}
+  all();frame();
+  var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(all,200);});
+  setTimeout(all,900);
+})();
+</script>

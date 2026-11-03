@@ -1,0 +1,127 @@
+<!-- ПРО ЁЛКИ: шапка главной (версия 2, 31.10.2026). Вставляется в Тильду блоком «HTML-код» (T123).
+     Обложку Тильды (старый блок) убрали: вся шапка собрана здесь. Картинки лежат на сервере Тильды.
+     Левая колонка — знак, текст, кнопка. Правая — фото пары. Фон — вечерний Улан-Удэ, приглушённый.
+     Текст никогда не заходит на лица: на компьютере текст слева, фото справа; на телефоне фото под текстом. -->
+<div id="proHero">
+  <div class="ph-sky"></div>
+  <div class="ph-shade"></div>
+  <canvas class="ph-snow"></canvas>
+  <div class="ph-in">
+    <div class="ph-text">
+      <h1 class="ph-logo"><img src="https://static.tildacdn.com/tila6564-6332-4265-b761-663563313231/logo-plate.jpg" alt="ПРО ЁЛКИ от Михальчеков — новогодний магазин в Улан-Удэ" width="964" height="700"></h1>
+      <div class="ph-badge">Пятый сезон · Улан-Удэ</div>
+      <p class="ph-lead">Новогодний магазин в Улан-Удэ. Выбирайте в каталоге и заказывайте онлайн.</p>
+      <a class="ph-btn" href="#rec5348694601">Смотреть каталог</a>
+    </div>
+    <div class="ph-photo"><img src="https://static.tildacdn.com/tila3963-3635-4663-b331-393733656434/para.jpg" alt="Пара в уютных новогодних свитерах у наряженной ёлки" width="768" height="1024"></div>
+  </div>
+  <div class="ph-garland"></div>
+</div>
+
+<style>
+#proHero{position:relative;overflow:hidden;box-sizing:border-box;width:100%;
+  height:clamp(720px,54vw,960px);display:flex;align-items:center;
+  background:linear-gradient(135deg,#7d1b34 0%,#561236 48%,#1f2656 100%);
+  font-family:"PT Sans","Trebuchet MS",Arial,sans-serif}
+#proHero *{box-sizing:border-box}
+/* вечерний город: приглушённый, чтобы не спорить с текстом */
+#proHero .ph-sky{position:absolute;right:0;bottom:0;width:82%;height:100%;
+  background:url("https://static.tildacdn.com/tila6263-3432-4465-b632-316439663333/gorod-shirokiy.jpg") right bottom/100% auto no-repeat;
+  opacity:.5;filter:saturate(1.25);
+  -webkit-mask-image:radial-gradient(ellipse 95% 80% at 78% 100%,#000 45%,transparent 100%);
+  mask-image:radial-gradient(ellipse 95% 80% at 78% 100%,#000 45%,transparent 100%)}
+/* тёплое свечение и затемнение под текстом: контраст */
+#proHero .ph-shade{position:absolute;inset:0;
+  background:
+   radial-gradient(ellipse 30% 55% at 53% 48%,rgba(255,176,80,.30) 0%,rgba(255,176,80,0) 70%),
+   linear-gradient(90deg,rgba(52,6,24,.62) 0%,rgba(52,6,24,.30) 42%,rgba(52,6,24,0) 72%),
+   linear-gradient(180deg,rgba(30,6,30,.30) 0%,rgba(30,6,30,0) 30%,rgba(25,8,40,.35) 100%)}
+#proHero .ph-snow{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+#proHero .ph-in{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:32% 28%;column-gap:2.5%;
+  align-items:center;padding:70px 0 40px 4.5vw}
+#proHero .ph-text{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+/* знак на светлой тёплой подложке — цвета знака не меняем */
+#proHero .ph-logo{margin:0;width:100%;max-width:500px;border-radius:24px;overflow:hidden;line-height:0;
+  box-shadow:0 14px 40px rgba(20,0,10,.55),0 0 0 3px rgba(242,196,109,.85)}
+#proHero .ph-logo img{display:block;width:100%;height:auto;max-width:100%}
+#proHero .ph-badge{margin:22px 0 14px;padding:10px 20px;border-radius:30px;background:#f2c46d;color:#4a0e22;
+  font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;line-height:1;box-shadow:0 4px 16px rgba(0,0,0,.35)}
+#proHero .ph-lead{margin:0 0 24px;max-width:470px;padding:14px 18px;border-radius:16px;
+  background:rgba(40,6,22,.55);border:1px solid rgba(255,214,130,.35);
+  color:#fff6e0;font-size:20px;line-height:1.45;text-shadow:0 2px 8px rgba(20,0,10,.8)}
+#proHero .ph-btn{display:inline-block;padding:18px 40px;border-radius:44px;
+  background:linear-gradient(180deg,#ff5a3c 0%,#d61f36 100%);border:2px solid #ffd682;
+  color:#fff!important;text-decoration:none!important;font-weight:700;font-size:18px;letter-spacing:.04em;
+  box-shadow:0 8px 28px rgba(255,70,50,.5),0 0 0 4px rgba(255,214,130,.18);text-shadow:0 1px 3px rgba(0,0,0,.4)}
+#proHero .ph-btn:hover{filter:brightness(1.08)}
+#proHero .ph-photo{margin:0;border-radius:22px;overflow:hidden;line-height:0;border:3px solid #f2c46d;
+  box-shadow:0 22px 60px rgba(15,0,10,.6),0 0 90px rgba(255,180,90,.35);background:#5b1226}
+#proHero .ph-photo img{display:block;width:100%;height:auto;max-width:100%}
+/* гирлянда сверху */
+#proHero .ph-garland{position:absolute;left:0;top:0;width:100%;height:110px;z-index:4;pointer-events:none}
+#proHero .ph-garland svg{width:100%;height:110px;overflow:visible}
+#proHero .bulb{animation:proTw 2.4s ease-in-out infinite}
+@keyframes proTw{0%,100%{opacity:.4}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){#proHero .bulb{animation:none}}
+
+/* телефон и узкий планшет: сверху знак и текст, ниже фото поменьше; фото НЕ под текстом */
+@media(max-width:900px){
+  #proHero{height:auto;display:block}
+  #proHero .ph-sky{left:0;right:0;width:100%;height:56vw;background-position:center bottom;background-size:100% auto;opacity:.7;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 38%);mask-image:linear-gradient(180deg,transparent 0%,#000 38%)}
+  #proHero .ph-shade{background:
+    radial-gradient(ellipse 60% 30% at 50% 78%,rgba(255,176,80,.28) 0%,rgba(255,176,80,0) 70%),
+    linear-gradient(180deg,rgba(30,6,30,.30) 0%,rgba(30,6,30,0) 40%,rgba(25,8,40,.30) 100%)}
+  #proHero .ph-in{display:flex;flex-direction:column;align-items:center;padding:62px 18px calc(34px + 36vw)}
+  #proHero .ph-text{align-items:center;text-align:center;width:100%}
+  #proHero .ph-logo{max-width:360px;border-radius:20px}
+  #proHero .ph-badge{margin:18px 0 12px;font-size:13px;padding:9px 16px}
+  #proHero .ph-lead{font-size:17px;margin:0 0 20px;max-width:360px;padding:12px 14px}
+  #proHero .ph-btn{padding:16px 34px;font-size:17px}
+  #proHero .ph-photo{width:58%;max-width:250px;margin-top:26px;border-radius:18px}
+}
+</style>
+
+<script>
+/* Гирлянда и снег. Работает только на опубликованной странице. */
+(function(){
+  var hero=document.getElementById('proHero');
+  if(!hero||hero.getAttribute('data-fx'))return;
+  hero.setAttribute('data-fx','1');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg',colors=['#ffd36b','#ff5a5a','#7be08a','#6fb7ff','#ffd36b'];
+  var gbox=hero.querySelector('.ph-garland');
+  function garland(){
+    gbox.innerHTML='';
+    var w=hero.clientWidth,seg=w<700?150:230,n=Math.ceil(w/seg),sag=w<700?20:30;
+    var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 '+w+' 110');
+    var d='M0 6';for(var i=0;i<n;i++){d+=' Q '+(i*seg+seg/2)+' '+(6+sag*2)+' '+((i+1)*seg)+' 6';}
+    var wire=document.createElementNS(NS,'path');wire.setAttribute('d',d);wire.setAttribute('fill','none');
+    wire.setAttribute('stroke','#1b0f12');wire.setAttribute('stroke-width','2.5');svg.appendChild(wire);
+    var L=wire.getTotalLength(),step=w<700?30:38,k=0;
+    for(var s=step/2;s<L;s+=step,k++){
+      var p=wire.getPointAtLength(s),c=colors[k%colors.length];
+      var g=document.createElementNS(NS,'g');g.setAttribute('class','bulb');g.style.animationDelay=(-(k*0.37)%2.4)+'s';
+      var glow=document.createElementNS(NS,'circle');glow.setAttribute('cx',p.x);glow.setAttribute('cy',p.y+7);glow.setAttribute('r','12');glow.setAttribute('fill',c);glow.setAttribute('opacity','.32');
+      var b=document.createElementNS(NS,'ellipse');b.setAttribute('cx',p.x);b.setAttribute('cy',p.y+7);b.setAttribute('rx','4.2');b.setAttribute('ry','6');b.setAttribute('fill',c);
+      g.appendChild(glow);g.appendChild(b);svg.appendChild(g);
+    }
+    gbox.appendChild(svg);
+  }
+  var cv=hero.querySelector('.ph-snow'),ctx=cv.getContext('2d'),flakes=[],W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2);
+  function size(){W=hero.clientWidth;H=hero.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  function make(){flakes=[];var n=W<700?55:110;
+    for(var i=0;i<n;i++)flakes.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.6+.8,v:Math.random()*.9+.35,a:Math.random()*6.28,s:Math.random()*.02+.005});}
+  function frame(){
+    ctx.clearRect(0,0,W,H);ctx.fillStyle='rgba(255,255,255,.9)';
+    for(var i=0;i<flakes.length;i++){var f=flakes[i];f.y+=f.v;f.a+=f.s;f.x+=Math.sin(f.a)*.5;
+      if(f.y>H+5){f.y=-5;f.x=Math.random()*W;}
+      ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,6.283);ctx.fill();}
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  function all(){size();make();garland();}
+  all();frame();
+  var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(all,200);});
+  setTimeout(all,800);
+})();
+</script>

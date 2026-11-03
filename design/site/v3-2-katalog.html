@@ -1,0 +1,95 @@
+<!-- ПРО ЁЛКИ: каталог-макет (версия 3, 31.10.2026). Блок Тильды «HTML-код» (T123), второй на странице.
+     Это МАКЕТ: названия взяты из закупок, картинки нарисованы нейросетью, цены не указаны.
+     Настоящие товары, цены и остатки будут в каталоге Тильды и в Google-таблице; оформление карточек повторим там.
+     Картинки лежат в виде 8 больших листов (по 4 товара). Адреса __SP_...__ подставляются при вставке в Тильду. -->
+<section id="catalog" class="pc">
+  <div class="pc-wrap">
+    <h2 class="pc-h">Новогодние товары</h2>
+    <p class="pc-sub">Всё для праздника в одном месте: от ёлки до гирлянды и подарков.</p>
+    <nav class="pc-tabs" id="pcTabs"></nav>
+    <div id="pcList"></div>
+    <p class="pc-note">Товары и фото на этой странице — примеры для макета. Цены и наличие появятся после подключения таблицы.</p>
+  </div>
+</section>
+
+<style>
+.pc{background:#fbf4e8;color:#3a1020;padding:72px 0 40px;font-family:"PT Sans","Trebuchet MS",Arial,sans-serif;scroll-margin-top:0}
+.pc *{box-sizing:border-box}
+.pc-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.pc-h{margin:0;text-align:center;font-family:"Playfair Display",Georgia,"Times New Roman",serif;font-weight:700;font-size:46px;line-height:1.1;color:#5a1226;letter-spacing:.01em}
+.pc-sub{margin:14px auto 0;text-align:center;font-size:19px;line-height:1.5;color:#7a4a50;max-width:560px}
+.pc-tabs{display:flex;gap:6px 26px;overflow-x:auto;margin:34px -24px 8px;padding:0 24px 6px;justify-content:center;flex-wrap:wrap;
+  position:sticky;top:0;z-index:20;background:rgba(251,244,232,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding-top:10px}
+.pc-tabs a{white-space:nowrap;text-decoration:none!important;color:#7a4a50!important;font-size:17px;font-weight:700;padding:8px 0;border-bottom:2px solid transparent;transition:.2s}
+.pc-tabs a:hover,.pc-tabs a.on{color:#b3202a!important;border-bottom-color:#d9a441}
+.pc-sec{padding-top:44px;scroll-margin-top:60px}
+.pc-sec h3{margin:0 0 4px;font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:32px;color:#5a1226;display:flex;align-items:center;gap:14px}
+.pc-sec h3:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#d9a441,rgba(217,164,65,0))}
+.pc-sec p.d{margin:0 0 22px;color:#8a5a60;font-size:17px}
+.pc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 22px}
+.pc-card{display:flex;flex-direction:column}
+.pc-img{display:block;width:100%;aspect-ratio:1/1;border-radius:18px;background-repeat:no-repeat;background-color:#f1e6d3;
+  background-size:211.6% 211.6%;transition:transform .35s ease,box-shadow .35s ease;box-shadow:0 8px 22px rgba(90,18,38,.10)}
+.pc-card:hover .pc-img{transform:translateY(-4px);box-shadow:0 16px 30px rgba(90,18,38,.18)}
+.pc-name{margin:14px 0 2px;font-weight:700;font-size:19px;line-height:1.25;color:#3a1020}
+.pc-txt{margin:0;font-size:15px;line-height:1.4;color:#8a5a60}
+.pc-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}
+.pc-price{font-size:15px;color:#a07880;font-style:italic}
+.pc-buy{border:0;background:none;cursor:pointer;color:#b3202a;font-weight:700;font-size:16px;padding:6px 0;border-bottom:2px solid #d9a441;font-family:inherit}
+.pc-buy:hover{color:#8a1220}
+.pc-biz{margin-top:6px;padding:0}
+.pc-note{margin:56px 0 0;text-align:center;font-size:14px;color:#a38a8e}
+@media(max-width:900px){
+  .pc{padding:48px 0 24px}.pc-h{font-size:32px}.pc-sub{font-size:17px}
+  .pc-tabs{justify-content:flex-start;flex-wrap:nowrap;gap:22px;margin-top:24px}
+  .pc-sec h3{font-size:25px}.pc-grid{grid-template-columns:repeat(2,1fr);gap:22px 14px}
+  .pc-name{font-size:16px}.pc-txt{font-size:14px}.pc-img{border-radius:14px}
+}
+</style>
+
+<script>
+(function(){
+  var root=document.getElementById('catalog');if(!root||root.getAttribute('data-ok'))return;root.setAttribute('data-ok','1');
+  var P=[0,100],pos=['2.6% 2.6%','97.4% 2.6%','2.6% 97.4%','97.4% 97.4%'];
+  var C=[
+   {id:'yolki',t:'Ёлки',d:'Искусственные ёлки: большие, настольные, с инеем и огоньками.',sp:'__SP_yolki__',
+    i:[['Ёлка с инеем и огоньками','Искусственная'],['Серебристая ёлка','Искусственная'],['Настольная ёлка с лентой','Искусственная'],['Классическая ёлка','Искусственная']]},
+   {id:'zhivye',t:'Живые ёлки и букеты',d:'Живая хвоя и зимние букеты.',sp:'__SP_zhivye__',
+    i:[['Живая ёлка в мешковине','Живая хвоя'],['Букет из еловых веток','Хвоя и ягоды'],['Зимний букет с розами','Розы, эвкалипт, хвоя'],['Композиция из хвои','В деревянной коробке']]},
+   {id:'girlyandy',t:'Гирлянды',d:'Тёплый свет для ёлки, окна и витрины.',sp:'__SP_girlyandy__',
+    i:[['Мягкая гирлянда','С огоньками'],['Меховая гирлянда','Белая, пушистая'],['Гирлянда «роса»','На тонкой нити'],['Гирлянда-спираль','Золотой свет']]},
+   {id:'dekor',t:'Декор',d:'Венки, домики и фонари для праздничного дома.',sp:'__SP_dekor__',
+    i:[['Венок','Хвоя, шишки, бант'],['Пряничный домик','С тёплой подсветкой'],['Фонарь','Со свечой и хвоей'],['Карусель','Музыкальная']]},
+   {id:'igrushki',t:'Игрушки',d:'Шары, щелкунчики и ёлочные украшения.',sp:'__SP_igrushki__',
+    i:[['Набор шаров','Красные и золотые'],['Щелкунчик','Деревянный'],['Сосульки','Стеклянные'],['Дед Мороз и Снегурочка','Мягкие фигурки']]},
+   {id:'gadzhety',t:'Гаджеты',d:'Умный свет и неон для праздничной атмосферы.',sp:'__SP_gadzhety__',
+    i:[['Умная штора','Световая'],['RGB-неон','Меняет цвета'],['Неон «Ёлочка»','На стену'],['Светильник-фонарь','Тёплый свет']]},
+   {id:'podarki',t:'Подарки',d:'Подарки родным и друзьям, которые приятно открывать.',sp:'__SP_podarki__',
+    i:[['Термокружка','Со снежинками'],['Набор кружек','Кружки с блюдцем'],['Копилка «баран»','Символ года'],['Подарочный набор','С шапкой Санты']]},
+   {id:'biznes',t:'Для бизнеса',d:'Оформление витрин, офисов, кафе и торговых центров. Оптовые партии и расчёт под ваш объём.',sp:'__SP_biznes__',
+    i:[['Гирлянда «роса» 100 м','Для витрин и фасадов'],['Ёлка для офиса и холла','Большая, нарядная'],['Мишура и дождик','Разные цвета'],['Шары для оформления','Партиями']],biz:1}
+  ];
+  var tabs=document.getElementById('pcTabs'),list=document.getElementById('pcList'),h='',th='';
+  C.forEach(function(c){
+    th+='<a href="#c-'+c.id+'" data-t="'+c.id+'">'+c.t+'</a>';
+    h+='<div class="pc-sec" id="c-'+c.id+'"><h3>'+c.t+'</h3><p class="d">'+c.d+'</p><div class="pc-grid">';
+    c.i.forEach(function(it,k){
+      h+='<div class="pc-card"><span class="pc-img" style="background-image:url('+c.sp+');background-position:'+pos[k]+'"></span>'
+        +'<div class="pc-name">'+it[0]+'</div><p class="pc-txt">'+it[1]+'</p>'
+        +'<div class="pc-row"><span class="pc-price">цена скоро</span><button class="pc-buy" type="button">'+(c.biz?'Запросить':'В корзину')+'</button></div></div>';
+    });
+    h+='</div></div>';
+  });
+  tabs.innerHTML=th;list.innerHTML=h;
+  /* плавная прокрутка и подсветка раздела */
+  tabs.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;e.preventDefault();
+    var s=document.getElementById(a.getAttribute('href').slice(1));if(s)window.scrollTo({top:s.getBoundingClientRect().top+window.pageYOffset-64,behavior:'smooth'});});
+  list.addEventListener('click',function(e){var b=e.target.closest('.pc-buy');if(!b)return;
+    if(b.textContent==='Запросить'){var c=document.getElementById('contacts');if(c)c.scrollIntoView({behavior:'smooth'});}});
+  if('IntersectionObserver' in window){
+    var links={};[].forEach.call(tabs.querySelectorAll('a'),function(a){links[a.dataset.t]=a;});
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){for(var k in links)links[k].classList.remove('on');var id=x.target.id.slice(2);if(links[id])links[id].classList.add('on');}});},{rootMargin:'-30% 0px -60% 0px'});
+    [].forEach.call(list.querySelectorAll('.pc-sec'),function(s){io.observe(s);});
+  }
+})();
+</script>
